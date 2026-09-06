@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayaansh Shah | Software & AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --neon-cyan: #06b6d4;
+            --neon-purple: #8b5cf6;
+            --neon-pink: #ec4899;
+            --neon-green: #10b981;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(6, 182, 212, 0.05) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(139, 92, 246, 0.05) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(236, 72, 153, 0.03) 0px, transparent 50%);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 14px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .logo {
+            font-family: var(--font-code);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--neon-purple);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            font-family: var(--font-code);
+            color: #047857;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-green);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .name {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .role-tag {
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            color: var(--neon-purple);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: #0f172a;
+            border: 1px solid #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--neon-cyan);
+            color: #000000;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '//';
+            font-family: var(--font-code);
+            color: var(--neon-cyan);
+            font-size: 1rem;
+        }
+
+        .terminal-block {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 18px;
+            font-family: var(--font-code);
+            font-size: 0.88rem;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .terminal-block span.keyword { color: var(--neon-purple); font-weight: 600; }
+        .terminal-block span.var { color: var(--neon-cyan); font-weight: 600; }
+        .terminal-block span.str { color: #d97706; }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+
+        .arch-card {
+            background: #f8fafc;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .arch-card:hover {
+            background: #ffffff;
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .arch-title {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .arch-title-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .arch-number {
+            font-family: var(--font-code);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .arch-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .stack-group {
+            margin-bottom: 20px;
+        }
+
+        .stack-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .stack-label {
+            font-family: var(--font-code);
+            font-size: 0.8rem;
+            color: var(--neon-purple);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .stack-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: #ffffff;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-family: var(--font-code);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .chip i {
+            font-size: 1.1rem;
+        }
+
+        .chip:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+            background: rgba(6, 182, 212, 0.05);
+            box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .metric-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 0.88rem;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--card-border);
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .metric-value {
+            font-family: var(--font-code);
+            color: var(--neon-purple);
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-family: var(--font-code);
+            border-top: 1px solid var(--card-border);
+            margin-top: 40px;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .domain-icon {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .metric-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                ayaansh_shah.sys
+            </div>
+            <div class="status-badge">
+                <div class="pulse-dot"></div> AVAILABLE FOR CORE R&D
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <aside>
+            <div class="card profile-card">
+                <div class="avatar-container">
+                    <img src="profile.jpg" alt="Ayaansh Shah" class="avatar-img">
+                </div>
+                <h1 class="name">Ayaansh Shah</h1>
+                <div class="role-tag">Software & AI Engineer</div>
+
+                <a href="https://www.instagram.com/ayaansh_shah_/" target="_blank" class="social-btn">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    @ayaansh_shah_
+                </a>
+            </div>
+
+            <div class="card">
+                <div class="section-title">System Metrics</div>
+                <div class="metric-list">
+                    <div class="metric-item">
+                        <span class="metric-label">
+                            <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                            Degree
+                        </span>
+                        <span class="metric-value">B.Tech CSE</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">
+                            <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            Core Specialization
+                        </span>
+                        <span class="metric-value">AI & Cyber Security</span>
+                    </div>
+                    <div class="metric-item">
+                        <span class="metric-label">
+                            <svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="15" x2="23" y2="15"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="15" x2="4" y2="15"></line>
+                            </svg>
+                            Development Focus
+                        </span>
+                        <span class="metric-value">High-Throughput Systems</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <div class="card">
+                <div class="section-title">Overview</div>
+                <div class="terminal-block">
+                    <span class="keyword">const</span> <span class="var">engineer</span> = {<br>
+                    &nbsp;&nbsp;name: <span class="str">"Ayaansh Shah"</span>,<br>
+                    &nbsp;&nbsp;background: <span class="str">"Computer Science & Engineering (B.Tech)"</span>,<br>
+                    &nbsp;&nbsp;focus: [<span class="str">"LLM Inference Optimization"</span>, <span class="str">"Distributed Architecture"</span>, <span class="str">"AppSec & Offensive Security"</span>],<br>
+                    &nbsp;&nbsp;mission: <span class="str">"Building resilient, low-latency AI-driven systems with zero-trust security engineered into the pipeline."</span><br>
+                    };
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">Technical Domains & Focus</div>
+                <div class="architecture-grid">
+                    
+                    <!-- 01: AI Infrastructure -->
+                    <div class="arch-card">
+                        <div class="arch-title">
+                            <span class="arch-title-left">
+                                <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <circle cx="12" cy="12" r="3" fill="var(--neon-cyan)"></circle>
+                                </svg>
+                                AI Infrastructure
+                            </span>
+                            <span class="arch-number" style="color: var(--neon-cyan);">01</span>
+                        </div>
+                        <div class="arch-desc">Fine-tuning open-weights models, RAG architectures, prompt engineering pipelines, and optimizing GPU inference bottlenecks.</div>
+                    </div>
+
+                    <!-- 02: Offensive Security -->
+                    <div class="arch-card">
+                        <div class="arch-title">
+                            <span class="arch-title-left">
+                                <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-purple)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                                    <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                                </svg>
+                                Offensive Security
+                            </span>
+                            <span class="arch-number" style="color: var(--neon-purple);">02</span>
+                        </div>
+                        <div class="arch-desc">Penetration testing, source code auditing, threat modeling, API vulnerability assessment, and runtime security hardening.</div>
+                    </div>
+
+                    <!-- 03: Distributed Backend -->
+                    <div class="arch-card">
+                        <div class="arch-title">
+                            <span class="arch-title-left">
+                                <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-pink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="7" rx="2"></rect>
+                                    <rect x="2" y="14" width="20" height="7" rx="2"></rect>
+                                    <line x1="6" y1="6.5" x2="6.01" y2="6.5" stroke-width="3"></line>
+                                    <line x1="6" y1="17.5" x2="6.01" y2="17.5" stroke-width="3"></line>
+                                </svg>
+                                Distributed Backend
+                            </span>
+                            <span class="arch-number" style="color: var(--neon-pink);">03</span>
+                        </div>
+                        <div class="arch-desc">Designing fault-tolerant microservices, high-concurrency REST/gRPC APIs, asynchronous messaging, and caching layers.</div>
+                    </div>
+
+                    <!-- 04: System Development -->
+                    <div class="arch-card">
+                        <div class="arch-title">
+                            <span class="arch-title-left">
+                                <svg class="domain-icon" viewBox="0 0 24 24" fill="none" stroke="var(--neon-green)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                                System Development
+                            </span>
+                            <span class="arch-number" style="color: var(--neon-green);">04</span>
+                        </div>
+                        <div class="arch-desc">Automation, Linux kernel interaction scripts, custom tooling buildout, and CI/CD infrastructure integration.</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">Engineered Tech Stack</div>
+                
+                <div class="stack-group">
+                    <div class="stack-label">Languages & Runtimes</div>
+                    <div class="stack-chips">
+                        <span class="chip"><i class="devicon-python-plain colored"></i> Python 3.12+</span>
+                        <span class="chip"><i class="devicon-cplusplus-plain colored"></i> C++20</span>
+                        <span class="chip"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                        <span class="chip"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                        <span class="chip"><i class="devicon-go-original-wordmark colored"></i> Go (Golang)</span>
+                        <span class="chip"><i class="devicon-postgresql-plain colored"></i> SQL / PostgreSQL</span>
+                        <span class="chip"><i class="devicon-bash-plain colored"></i> Bash / Shell Scripting</span>
+                    </div>
+                </div>
+
+                <div class="stack-group" style="margin-top: 16px;">
+                    <div class="stack-label">Artificial Intelligence & ML</div>
+                    <div class="stack-chips">
+                        <span class="chip"><i class="devicon-pytorch-original colored"></i> PyTorch</span>
+                        <span class="chip"><i class="devicon-huggingface-plain colored"></i> HuggingFace</span>
+                        <span class="chip"><i class="devicon-opencv-plain colored"></i> OpenCV</span>
+                        <span class="chip"><i class="devicon-python-plain colored"></i> LangChain / LlamaIndex</span>
+                        <span class="chip"><i class="devicon-linux-plain colored"></i> Ollama / vLLM</span>
+                        <span class="chip"><i class="devicon-fastapi-plain colored"></i> Qdrant / Vector DBs</span>
+                    </div>
+                </div>
+
+                <div class="stack-group" style="margin-top: 16px;">
+                    <div class="stack-label">Security & Infra Tooling</div>
+                    <div class="stack-chips">
+                        <span class="chip"><i class="devicon-docker-plain colored"></i> Docker</span>
+                        <span class="chip"><i class="devicon-linux-plain colored"></i> Linux / Kali</span>
+                        <span class="chip"><i class="devicon-git-plain colored"></i> Git</span>
+                        <span class="chip"><i class="devicon-github-original colored"></i> GitHub Actions</span>
+                        <span class="chip"><i class="devicon-redis-plain colored"></i> Redis</span>
+                        <span class="chip"><i class="devicon-network-plain colored"></i> Burp Suite / Nmap</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <footer>
+        [SYS_STATUS: OPERATIONAL] &bull; Ayaansh Shah &bull; 2026
+    </footer>
+
+</body>
+</html>
